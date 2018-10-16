@@ -1,0 +1,59 @@
+﻿@model  Model.tbl_sancion
+
+@{
+    ViewBag.Title = (Model.id_sancion > 0 ? Model.nombre_sancion : "Nuevo registro");
+
+
+    List<Model.tbl_empleado> empleados = new Model.tbl_empleado().GetAll();
+}
+
+<div id="page-wrapper">
+    <h2 class="page-header">
+        @(Model.id_sancion > 0 ? Model.nombre_sancion : "Nuevo registro")
+    </h2>
+
+    <ol class="breadcrumb">
+        <li><a href="~/admin/sancion">Sanciones</a></li>
+        <li class="active">@(Model.id_sancion > 0 ? Model.nombre_sancion : "Nuevo registro")</li>
+    </ol>
+
+    @using (Html.BeginForm("Guardar", "sancion", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.id_sancion)
+
+        <div class="form-group col-md-6 col-sm-6 col-lg-6">
+            @Html.LabelFor(x => x.nombre_sancion)
+            @Html.TextBoxFor(x => x.nombre_sancion, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.nombre_sancion, null, new { @class = "label label-danger" })
+        </div>
+
+        <div class="form-group col-md-6 col-sm-6 col-lg-6">
+            @Html.LabelFor(x => x.monto)
+            @Html.TextBoxFor(x => x.monto, new { @class = "form-control", @type = "number" })
+            @Html.ValidationMessageFor(x => x.monto, null, new { @class = "label label-danger" })
+        </div>
+
+        <div class="form-group col-md-6 col-sm-6 col-lg-6">
+            @Html.LabelFor(x => x.detalle)
+            @Html.TextBoxFor(x => x.detalle, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.detalle, null, new { @class = "label label-danger" })
+        </div>
+
+
+
+        <div class="form-group col-md-6 col-sm-6 col-lg-6">
+            <label>Empleado</label>
+            <select name="id_empleado" class="form-control">
+                @foreach (var c in empleados)
+                {
+                    <option @(Model.id_empleado == Convert.ToInt32(c.id_empleado) ? "selected" : "") value="@c.id_empleado">@c.primer_nombre</option>
+                }
+            </select>
+        </div>
+
+
+        <div class="text-right col-md-12 col-sm-12 col-lg-12">
+            <button type="submit" data-ajax="true" class="btn btn-primary">Guardar</button>
+        </div>
+    }
+</div>

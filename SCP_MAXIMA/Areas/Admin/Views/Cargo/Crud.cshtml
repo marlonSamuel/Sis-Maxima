@@ -1,0 +1,42 @@
+﻿@model Model.tbl_cargo
+@{
+    ViewBag.Title = (Model.id_cargo > 0 ? Model.nombre_cargo : "Nuevo registro");
+}
+
+<div id="page-wrapper">
+    <h2 class="page-header">
+        @(Model.id_cargo > 0 ? Model.nombre_cargo : "Nuevo registro")
+    </h2>
+
+    <ol class="breadcrumb">
+        <li><a href="~/admin/cargo">Cargos</a></li>
+        <li class="active">@(Model.id_cargo > 0 ? Model.nombre_cargo : "Nuevo registro")</li>
+    </ol>
+
+    @using (Html.BeginForm("Guardar", "Cargo", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.id_cargo)
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.nombre_cargo)
+            @Html.TextBoxFor(x => x.nombre_cargo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.nombre_cargo, null, new { @class = "label label-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.descripcion_cargo)
+            @Html.TextBoxFor(x => x.descripcion_cargo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.descripcion_cargo, null, new { @class = "label label-danger" })
+        </div>
+        <div class="form-group col-md-6 col-sm-6 col-lg-6">
+            @Html.LabelFor(x => x.sueldo)
+            @Html.TextBoxFor(x => x.sueldo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.sueldo, null, new { @class = "label label-danger" })
+        </div>
+
+        <div class="text-right">
+            <button type="submit" data-ajax="true" class="btn btn-primary">Guardar</button>
+        </div>
+    }
+</div>
+

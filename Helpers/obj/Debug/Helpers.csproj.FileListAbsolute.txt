@@ -1,0 +1,17 @@
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\Helpers\bin\Debug\Helpers.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\Helpers\bin\Debug\Helpers.pdb
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\Helpers\obj\Debug\Helpers.csprojResolveAssemblyReference.cache
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\Helpers\obj\Debug\Helpers.csproj.CoreCompileInputs.cache
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\Helpers\obj\Debug\Helpers.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\Helpers\obj\Debug\Helpers.pdb
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\Helpers\bin\Debug\Helpers.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\Helpers\bin\Debug\Helpers.pdb
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\Helpers\obj\Debug\Helpers.csproj.CoreCompileInputs.cache
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\Helpers\obj\Debug\Helpers.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\Helpers\obj\Debug\Helpers.pdb
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\Helpers\obj\Debug\Helpers.csprojResolveAssemblyReference.cache
+C:\Users\senpai\Desktop\Maxima\Helpers\bin\Debug\Helpers.dll
+C:\Users\senpai\Desktop\Maxima\Helpers\bin\Debug\Helpers.pdb
+C:\Users\senpai\Desktop\Maxima\Helpers\obj\Debug\Helpers.csproj.CoreCompileInputs.cache
+C:\Users\senpai\Desktop\Maxima\Helpers\obj\Debug\Helpers.dll
+C:\Users\senpai\Desktop\Maxima\Helpers\obj\Debug\Helpers.pdb

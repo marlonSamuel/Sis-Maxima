@@ -1,0 +1,49 @@
+﻿@model List<Model.Dto.ResumenEmpleadoDto>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PDFEmpleados</title>
+    <link href="~/Areas/Admin/Assets/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <h1>Resumen Empleados</h1>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Empleado</th>
+                <th>Cargo</th>
+                <th>Estacion</th>
+                <th>Sanciones</th>
+                <th>Prestamos</th>
+                <th>Anticipos</th>
+            </tr>
+
+        </thead>
+        <thead>
+            @foreach (var e in Model)
+            {
+            <tr>
+                <td>@e.empleado</td>
+                <td>@e.cargo</td>
+                <td>@e.estacion</td>
+                <td>@e.sanciones</td>
+                <td>@e.prestamos</td>
+                <td>@e.anticipos</td>
+            </tr>
+            }
+        </thead>
+    </table>
+</body>
+</html>
+
+<script src="~/Areas/Admin/Assets/js/jquery.min.js"></script>
+<script src="~/Areas/Admin/Assets/js/bootstrap.min.js"></script>

@@ -1,0 +1,299 @@
+﻿@model  Model.tbl_registro_pago
+@{
+    ViewBag.Title = "Index";
+    var id_empleado = Convert.ToInt32(Request.Params["id_empleado"]);
+
+    tbl_planilla planilla = new tbl_planilla().ObtenerPlanilla();
+
+    Model.Dto.DtoEmpleado empleado = new tbl_registro_pago().Obtener(id_empleado);
+    Model.id_empleado = empleado.id_empleado;
+    Model.num_planilla = planilla.num_planilla;
+
+    var fec = planilla.fecha.ToString("dd/MM/yyyy");
+    var fecf = planilla.fecha_fin.ToString("dd/MM/yyyy");
+
+    tbl_estacion estacion = new tbl_estacion().ObtenerPorId(empleado.id_estacion);
+
+    List<tbl_anticipo> anticipo = new tbl_anticipo().ObtenerEmpleadoId(id_empleado);
+    tbl_prestamo prestamo = new tbl_prestamo().ObtenerEmpleadoId(id_empleado);
+
+
+    Model.Dto.DtoAbono abono = new Model.Dto.DtoAbono();
+    if (prestamo != null) {
+       abono = new tbl_abono().ObtenerPrestamoId(prestamo.id_prestamo, planilla.num_planilla);
+    }
+
+
+    List<tbl_prestacion> prestacion = new tbl_prestacion().ObtenerEmpleadoId(id_empleado);
+    List<tbl_sancion> sancion = new tbl_sancion().ObtenerEmpleadoId(id_empleado);
+    List<tbl_vacacion> vacacion = new tbl_vacacion().ObtenerEmpleadoId(id_empleado);
+    List<tbl_asueto> asueto = new tbl_asueto().ObtenerEmpleadoId(id_empleado);
+
+    decimal? @total = empleado.suelgo;
+}
+
+<div id="page-wrapper">
+    <div class="container page-header panel panel-info">
+        <div class="panel-heading">
+            <h3 class="text-center">Estacion @empleado.estacion  </h3>
+            <h4>boleta empleado @(empleado.nombres + " " + empleado.apellidos)</h4>
+            <h5 class="text-right">Numero de Planilla <span class="text-danger"> <b>@planilla.num_planilla</b></span></h5>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("Guardar", "Registro", FormMethod.Post))
+            {
+
+            <input class="form-control" id="id" type="hidden" value="@Model.id_registro_pago" />
+
+                <div class="row">
+                    <div class="form-group col-md-6 col-sm-6 col-lg-6">
+                        @Html.HiddenFor(x => x.id_empleado, new { id = "id_empleado" })
+                        @Html.HiddenFor(x => x.num_planilla, new { id = "num_planilla" })
+
+                        <label>Recibo de pago</label>
+                        <input class="form-control" id="no_recibo" type="text" value="@Model.no_recibo" />
+                        @Html.ValidationMessageFor(x => x.no_recibo, null, new { @class = "label label-danger" })
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-6 col-lg-6">
+                        <label>Sueldo Base</label>
+                        <input type="text" class="form-control" value="@empleado.suelgo" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group form-inline col-md-12 col-sm-12 col-lg-12">
+                        <label>concepto de pago: <span>Quincenal</span></label>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4 col-lg-4">
+                        <label>Del</label>
+                        <input type="text" class="form-control" value="@fec" />
+                    </div>
+
+                    <div class="form-group col-md-4 col-sm-4 col-lg-4">
+                        <label>Al</label>
+                        <input type="text" class="form-control" value="@fecf" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12 col-sm-12 col-lg-12">
+                        @if (prestacion.Count > 0)
+                        {
+                            <label>Prestaciones</label>
+                            foreach (var p in prestacion)
+                            {
+                                <table class="table table-responsive table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th width="50%">Concepto Prestacion</th>
+                                            <th>Monto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>@p.nombre_prestacion</td>
+                                            <td>Q./ @p.monto</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <input type="hidden" class="form-control" value="@(total = total + p.monto);" />
+
+                            }
+                        }
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-md-12 col-sm-12 col-lg-12">
+                        @if (anticipo.Count > 0)
+                        {
+                            <label>Anticipos</label>
+                            foreach (var a in anticipo)
+                            {
+                                <table class="table table-responsive table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th width="50%">Detalle anticipo</th>
+                                            <th>Monto</th>
+                                            <th>Fecha</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>@a.detalle</td>
+                                            <td>Q./ @a.monto</td>
+                                            <td>@a.fecha</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <input type="hidden" class="form-control" value="@(total = total - a.monto);" />
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12 col-sm-12 col-lg-12">
+                        @if (prestamo != null)
+                        {
+                            <label>Prestamo </label><br />
+                            <label>Descripcion de prestamos: <span>@prestamo.detalle</span></label>
+                            if (abono != null)
+                            {
+                                <table class="table table-responsive table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th width="50%">detalle Abono</th>
+                                            <th>Monto Prestamo</th>
+                                            <th>Monto Abono</th>
+                                            <th>Saldo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>@abono.detalle</td>
+                                            <td>Q./ @prestamo.monto</td>
+                                            <td>Q./ @abono.monto</td>
+                                            <td>Q./ @prestamo.saldo</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            }
+
+                            <input type="hidden" class="form-control" value="@(total = total - abono.monto);" />
+                        }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12 col-sm-12 col-lg-12">
+                        @if (sancion.Count > 0)
+                        {
+                            <label>Sanciones</label>
+                            foreach (var s in sancion)
+                            {
+                                <table class="table table-responsive table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th width="50%">Detalle sancion</th>
+                                            <th>Monto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>@s.detalle</td>
+                                            <td>Q./ @s.monto</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" class="form-control" value="@(total = total - s.monto);" />
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6 col-sm-6 col-lg-6">
+                        <label>Faltante</label>
+                        <input class="form-control" id="faltante" type="text" value="@Model.faltante" />
+                    </div>
+                </div>
+
+                <div id="to" class="row">
+                    <div class="form-group col-md-6 col-sm-6 col-lg-6">
+                        <label>Total</label>
+                        <input class="form-control" id="total" type="text" value="@total" />
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-success">Total a pagar Q./ @(total - Model.faltante)</h3>
+                </div>
+                <div class="text-right">
+                    <a id="volver" href="/admin/registro" class="btn btn-danger"><i class="fa fa-undo"></i>Volver</a>
+                    <a id="button" class="btn btn-primary"><i class="fa fa-save"></i>Guardar</a>
+                    <a id="pdf" class="btn btn-danger">
+                        <i class="fa fa-file-pdf-o"></i> <span class="hidden-xs hidden-sm">Imprimir</span>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#to").hide();
+        
+            setData = function () {
+                debugger;
+                var id = $("#id").val();
+                var id_empleado = $("#id_empleado").val()
+                var num_planilla = $("#num_planilla").val();
+                var recibo = $("#no_recibo").val();
+                var faltante = $("#faltante").val();
+                var total = $("#total").val();
+
+
+                var registro = new Object();
+
+
+                registro.total = total;
+                registro.id_registro_pago = id;
+                registro.id_empleado = id_empleado;
+                registro.num_planilla = num_planilla;
+                registro.no_recibo = recibo;
+                registro.faltante = faltante;
+
+                return registro;
+            };
+
+        $("#button").click(function () {
+            var registro = setData();
+
+            $.ajax({
+                data: registro, //datos que se envian a traves de ajax
+                url: '/admin/registro/guardar', //archivo que recibe la peticion
+                type: 'post', //método de envio
+                dataType: "json",
+
+                success: function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                    $(location).attr('href', "/admin/registro")
+                }
+            });
+        });
+
+
+     
+        $("#pdf").click(function () {
+
+            var registro = setData();
+
+            if (registro.id_registro_pago == "0") {
+                $.ajax({
+                    data: registro, //datos que se envian a traves de ajax
+                    url: '/admin/boleta/guardar', //archivo que recibe la peticion
+                    type: 'post', //método de envio
+                    dataType: "json",
+
+                    success: function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                        window.open("/admin/boleta/exportaAPDF?id_registro=" + registro.id_registro_pago);
+                    }
+                });
+
+            } else {
+                window.open("/admin/boleta/exportaAPDF?id_registro=" + registro.id_registro_pago);
+                //$(location).attr('href', "/admin/boleta/exportaAPDF?id_registro=" + registro.id_registro_pago);
+             }
+        });
+    })
+</script>
+
+
+

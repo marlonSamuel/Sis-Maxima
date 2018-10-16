@@ -1,0 +1,40 @@
+﻿@model List<Model.Dto.ResumenPlanillaDto>
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>PDFPlanilla</title>
+        <link href="~/Areas/Admin/Assets/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div>
+            <h1>Resumen de planillas</h1>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Numero de Planilla</th>
+                    <th>Total</th>
+                </tr>
+
+            </thead>
+            <thead>
+                @foreach (var p in Model)
+                {
+                <tr>
+                    <td>@p.num_planilla</td>
+                    <td>Q/. @p.total</td>
+                </tr>
+                }
+            </thead>
+        </table>
+    </body>
+</html>
+
+<script src="~/Areas/Admin/Assets/js/jquery.min.js"></script>
+<script src="~/Areas/Admin/Assets/js/bootstrap.min.js"></script>

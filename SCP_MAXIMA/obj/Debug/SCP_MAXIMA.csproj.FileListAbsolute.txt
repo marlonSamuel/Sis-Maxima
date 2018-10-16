@@ -1,0 +1,111 @@
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\SCP_MAXIMA.dll.config
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\SCP_MAXIMA.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\SCP_MAXIMA.pdb
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Helpers.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Mvc.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Razor.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.Razor.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Razor.xml
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.xml
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.Razor.xml
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Helpers.xml
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Mvc.xml
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Razor.resources.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Webpages.resources.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.csprojResolveAssemblyReference.cache
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.csproj.CoreCompileInputs.cache
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.pdb
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\Model.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\EntityFramework.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\Helpers.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\Model.pdb
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\EntityFramework.xml
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\Helpers.pdb
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\EntityFramework.SqlServer.dll
+C:\Users\Sergio FHL\Desktop\ProyectoDeGraduacion\SCP_MAXIMA\SCP_MAXIMA\bin\EntityFramework.SqlServer.xml
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\SCP_MAXIMA.dll.config
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\SCP_MAXIMA.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\SCP_MAXIMA.pdb
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\EntityFramework.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\EntityFramework.SqlServer.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\Helpers.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\Model.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Helpers.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Mvc.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Razor.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.Razor.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\Helpers.pdb
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\Model.pdb
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\EntityFramework.xml
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\EntityFramework.SqlServer.xml
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Razor.xml
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.xml
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Webpages.Razor.xml
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Helpers.xml
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\System.Web.Mvc.xml
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Razor.resources.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Webpages.resources.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.csprojResolveAssemblyReference.cache
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.csproj.CoreCompileInputs.cache
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.dll
+C:\Users\Sergio FHL\Desktop\SCP_MAXIMA\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.pdb
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\SCP_MAXIMA.dll.config
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\SCP_MAXIMA.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\SCP_MAXIMA.pdb
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\EntityFramework.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\EntityFramework.SqlServer.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\Helpers.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\Model.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Helpers.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Mvc.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Razor.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Webpages.Deployment.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Webpages.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Webpages.Razor.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\Helpers.pdb
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\Model.pdb
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\EntityFramework.xml
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\EntityFramework.SqlServer.xml
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Razor.xml
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Webpages.xml
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Webpages.Deployment.xml
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Webpages.Razor.xml
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Helpers.xml
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\System.Web.Mvc.xml
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\es\System.Web.Razor.resources.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\es\System.Web.Webpages.resources.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\es\System.Web.Helpers.resources.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\es\System.Web.Mvc.resources.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.csprojAssemblyReference.cache
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.csproj.CoreCompileInputs.cache
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.csproj.CopyComplete
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\obj\Debug\SCP_MAXIMA.pdb
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\Rotativa.Core.dll
+C:\Users\senpai\Desktop\Maxima\SCP_MAXIMA\bin\Rotativa.MVC.dll

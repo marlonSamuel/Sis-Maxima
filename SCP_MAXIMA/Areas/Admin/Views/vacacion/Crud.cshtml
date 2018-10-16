@@ -1,0 +1,67 @@
+﻿@model  Model.tbl_vacacion
+
+@{
+        ViewBag.Title = (Model.id_vacacion > 0 ? Model.nombre : "Nuevo registro");
+
+
+        List<Model.tbl_empleado> empleados = new Model.tbl_empleado().GetAll();
+}
+
+<div id="page-wrapper">
+    <h2 class="page-header">
+        @(Model.id_vacacion > 0 ? Model.nombre : "Nuevo registro")
+    </h2>
+
+    <ol class="breadcrumb">
+        <li><a href="~/admin/vacacion">Vacaciones</a></li>
+        <li class="active">@(Model.id_vacacion > 0 ? Model.nombre : "Nuevo registro")</li>
+    </ol>
+
+    @using (Html.BeginForm("Guardar", "vacacion", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.id_vacacion)
+
+        <div class="form-group col-md-6 col-sm-6 col-lg-6">
+            @Html.LabelFor(x => x.nombre)
+            @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "label label-danger" })
+        </div>
+
+        <div class="form-group col-md-6 col-sm-6 col-lg-6">
+            @Html.LabelFor(x => x.fecha_inicio)
+            @Html.TextBoxFor(x => x.fecha_inicio, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+            @Html.ValidationMessageFor(x => x.fecha_inicio, null, new { @class = "label label-danger" })
+        </div>
+
+        <div class="form-group col-md-6 col-sm-6 col-lg-6">
+            @Html.LabelFor(x => x.fecha_fin)
+            @Html.TextBoxFor(x => x.fecha_fin, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+            @Html.ValidationMessageFor(x => x.fecha_fin, null, new { @class = "label label-danger" })
+        </div>
+
+        <div class="form-group col-md-6 col-sm-6 col-lg-6">
+            @Html.LabelFor(x => x.detalle)
+            @Html.TextBoxFor(x => x.detalle, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.detalle, null, new { @class = "label label-danger" })
+        </div>
+
+     
+
+        <div class="form-group col-md-6 col-sm-6 col-lg-6">
+            <label>Empleado</label>
+            <select name="id_empleado" class="form-control">
+                @foreach (var c in empleados)
+                {
+                    <option @(Model.id_empleado == Convert.ToInt32(c.id_empleado) ? "selected" : "") value="@c.id_empleado">@c.primer_nombre</option>
+                }
+            </select>
+        </div>
+
+
+        <div class="text-right col-md-12 col-sm-12 col-lg-12">
+            <button type="submit" data-ajax="true" class="btn btn-primary">Guardar</button>
+        </div>
+    }
+</div>
+
+

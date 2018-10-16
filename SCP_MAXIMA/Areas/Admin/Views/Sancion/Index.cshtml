@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="page-wrapper">
+    <div id="sancion" class="page">
+
+        <h1 class="page-header remove-margin">
+            <a class="btn btn-primary pull-right" href="~/admin/sancion/crud">Agregar</a>
+            Sanciones
+        </h1>
+
+        <div id="list"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var agrid = $("#list").anexGrid({
+            columnas: [
+                { leyenda: 'Nombre Sancion', columna: 'nombre_sancion', ordenable: true },
+                { leyenda: 'Monto', columna: 'monto', ordenable: true },
+                { leyenda: 'Detalle', columna: 'detalle', ordenable: true },
+                { style: 'width:60px' },
+            ],
+            modelo: [
+                {
+                    propiedad: 'nombre_sancion', formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/sancion/crud/")' + obj.id_sancion,
+                            contenido: valor
+                        });
+                    }
+                },
+                { propiedad: 'monto' },
+                { propiedad: 'detalle' },
+                {
+                    formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/sancion/eliminar/")' + obj.id_sancion,
+                            contenido: '<i class="fa fa-trash"></i>',
+                            class: 'btn btn-danger btn-xs btn-block btn-eliminar',
+                        });
+                    }
+                },
+            ],
+            url: '@Url.Content("~/admin/sancion/listar")',
+            paginable: true,
+            limite: [20, 60, 100],
+            columna: 'id',
+            columna_orden: 'DESC'
+        });
+
+        agrid.tabla().on('click', '.btn-eliminar', function () {
+            if (!confirm('¿Está seguro de eliminar este registro?'))
+            {
+                return;
+            }
+
+            $.post($(this).attr('href'), function (r) {
+                if (r.response) agrid.refrescar();
+            }, 'json')
+
+            return false;
+        })
+    })
+</script>

@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="page-wrapper">
+    <div id="vacacion" class="page">
+
+        <h1 class="page-header remove-margin">
+            <a class="btn btn-primary pull-right" href="~/admin/vacacion/crud">Agregar</a>
+            Vacaciones
+        </h1>
+
+        <div id="list"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var agrid = $("#list").anexGrid({
+            columnas: [
+                { leyenda: 'Nombre', columna: 'nombre', ordenable: true },
+                { leyenda: 'Fecha Inicio', columna: 'fecha_inicio', ordenable: true },
+                { leyenda: 'Fecha Fin', columna: 'fecha_fin', ordenable: true },
+                { leyenda: 'Detalle', columna: 'detalle', ordenable: true },
+                { style: 'width:60px' },
+            ],
+            modelo: [
+                {
+                    propiedad: 'nombre', formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/vacacion/crud/")' + obj.id_vacacion,
+                            contenido: valor
+                        });
+                    }
+                },
+                { propiedad: 'fecha_inicio' },
+                { propiedad: 'fecha_fin' },
+                { propiedad: 'detalle' },
+                {
+                    formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/vacacion/eliminar/")' + obj.id_vacacion,
+                            contenido: '<i class="fa fa-trash"></i>',
+                            class: 'btn btn-danger btn-xs btn-block btn-eliminar',
+                        });
+                    }
+                },
+            ],
+            url: '@Url.Content("~/admin/vacacion/listar")',
+            paginable: true,
+            limite: [20, 60, 100],
+            columna: 'id',
+            columna_orden: 'DESC'
+        });
+
+        agrid.tabla().on('click', '.btn-eliminar', function () {
+            if (!confirm('¿Está seguro de eliminar este registro?'))
+            {
+                return;
+            }
+
+            $.post($(this).attr('href'), function (r) {
+                if (r.response) agrid.refrescar();
+            }, 'json')
+
+            return false;
+        })
+    })
+</script>
+

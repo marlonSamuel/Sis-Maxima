@@ -1,0 +1,109 @@
+﻿@model  Model.tbl_registro_pago
+@{
+    ViewBag.Title = "Index";
+    List<Model.tbl_empleado> empleados = new Model.tbl_empleado().GetAll();
+
+    int idEmpleado = 0;
+}
+
+<div id="page-wrapper">
+    <h2>REGISTRO</h2>
+
+    @using (Html.BeginForm("obtener", "registro", FormMethod.Post))
+    {
+    <div class="row">
+        <div class="form-group col-md-6 col-sm-6 col-lg-6">
+            <label>Seleccione Empleado</label>
+            <select name="id_empleado" class="form-control">
+                @foreach (var c in empleados)
+                {
+                    <option @(idEmpleado == Convert.ToInt32(c.id_empleado) ? "selected" : "") value="@c.id_empleado">@c.primer_nombre</option>
+                }
+            </select>
+        </div>
+
+
+        <div style="margin-top: 20px;" class="col-md-4 col-sm-4 col-lg-4">
+            <button type="submit" class="btn btn-success">Nuevo</button>
+        </div>
+        <div style="margin-top: 20px;" class="pull-right">
+            <a id="cierre" class="btn btn-primary">Cierre de planilla</a>
+        </div>
+        <div class="col-md-12 col-lg-12 col-sm-12">
+            <h3>
+                Registros de Pagos planilla actual
+            </h3>
+        </div>
+        <div id="list"></div>
+    </div>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        var agrid = $("#list").anexGrid({
+            columnas: [
+                { leyenda: 'empleado', columna: 'empleado', ordenable: true },
+                { leyenda: 'planilla', columna: 'num_planilla', ordenable: true, filtro: true },
+                { leyenda: 'total a pagar', columna: 'total', ordenable: true },
+                { style: 'width:60px' },
+                { style: 'width:60px' },
+            ],
+            modelo: [
+                {
+                    propiedad: 'empleado', formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/registro/crud/")' + obj.id_registro_pago + "/?id_empleado=" + obj.id_empleado,
+                            contenido: valor
+                        });
+                    }
+                },
+                { propiedad: 'num_planilla' },
+                { propiedad: 'total' },
+                {
+                    formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/registro/eliminar/")' + obj.id_registro_pago,
+                            contenido: '<i class="fa fa-trash"></i>',
+                            class: 'btn btn-danger btn-xs btn-block btn-eliminar',
+                        });
+                    },
+                },
+
+                {
+                   formato: function (tr, obj, valor) {
+                       return anexGrid_link({
+                           href: '@Url.Content("~/admin/boleta/ExportaAPDF/")' + "?id_registro=" + obj.id_registro_pago,
+                            contenido: '<i class="fa fa-file-pdf-o"></i>',
+                            class: 'btn btn-default btn-xs btn-block',
+                        });
+                    }
+                },
+            ],
+            url: '@Url.Content("~/admin/registro/listar")',
+            paginable: true,
+            filtrable: true,
+            limite: [20, 60, 100],
+            columna: 'id',
+            columna_orden: 'DESC'
+        });
+
+        agrid.tabla().on('click', '.btn-eliminar', function () {
+            if (!confirm('¿Está seguro de eliminar este registro?'))
+            {
+                return;
+            }
+
+            $.post($(this).attr('href'), function (r) {
+                if (r.response) agrid.refrescar();
+            }, 'json')
+
+            return false;
+        })
+
+        $("#cierre").click(function (){
+            href: '@Url.Content("~/admin/registro/cierre")'
+        });
+    })
+</script>
+

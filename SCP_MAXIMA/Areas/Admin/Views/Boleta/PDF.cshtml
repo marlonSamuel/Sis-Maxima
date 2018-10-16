@@ -1,0 +1,291 @@
+﻿@model Model.tbl_registro_pago
+@{
+    Layout = null;
+
+    var id_empleado = Model.id_empleado;
+
+    tbl_planilla planilla = new tbl_planilla().ObtenerPlanilla();
+
+    Model.Dto.DtoEmpleado empleado = new tbl_registro_pago().Obtener(id_empleado);
+    Model.id_empleado = empleado.id_empleado;
+    Model.num_planilla = planilla.num_planilla;
+
+    var date = DateTime.Now.ToLongDateString();
+
+    var fec = planilla.fecha.ToLongDateString();
+    var fecf = planilla.fecha_fin.ToLongDateString();
+
+    tbl_estacion estacion = new tbl_estacion().ObtenerPorId(empleado.id_estacion);
+
+    List<tbl_anticipo> anticipo = new tbl_anticipo().ObtenerEmpleadoId(id_empleado);
+    tbl_prestamo prestamo = new tbl_prestamo().ObtenerEmpleadoId(id_empleado);
+
+
+    Model.Dto.DtoAbono abono = new Model.Dto.DtoAbono();
+    if (prestamo != null)
+    {
+        abono = new tbl_abono().ObtenerPrestamoId(prestamo.id_prestamo, planilla.num_planilla);
+    }
+
+
+    List<tbl_prestacion> prestacion = new tbl_prestacion().ObtenerEmpleadoId(id_empleado);
+    List<tbl_sancion> sancion = new tbl_sancion().ObtenerEmpleadoId(id_empleado);
+    List<tbl_vacacion> vacacion = new tbl_vacacion().ObtenerEmpleadoId(id_empleado);
+    List<tbl_asueto> asueto = new tbl_asueto().ObtenerEmpleadoId(id_empleado);
+
+    decimal? @total = empleado.suelgo - Model.faltante;
+}
+
+<header>
+    <link href="~/Areas/Admin/Assets/css/bootstrap.min.css" rel="stylesheet" />
+</header>
+
+<div id="page-wrapper">
+    <div class="container page-header panel panel-default">
+        <label class="pull-right">Chiquimulilla @date</label>
+        <div class="panel-default">
+            <h3>Estacion: @empleado.estacion  </h3>
+            <h5>Empleado</h5>
+            <label>nombre: @(empleado.nombres + " " + empleado.apellidos)</label><br />
+            <label>dpi: @empleado.dpi</label><br />
+            <label>puesto: @empleado.cargo</label><br />
+            <h5 class="text-right">Numero de Planilla <span class="text-danger"> <b>@planilla.num_planilla</b></span></h5>
+        </div>
+
+        <div class="panel-body">
+            <input class="form-control" id="id" type="hidden" value="@Model.id_registro_pago" />
+
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No de recibo</th>
+                            <th> Sueldo Base</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.no_recibo</td>
+                            <td width="70%"> @empleado.suelgo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Concepto de pago</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Quincenal</td>
+                            <td>del    @fec      al       @fecf</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <label>Prestaciones</label>
+                @if (prestacion.Count > 0)
+                {
+                    foreach (var p in prestacion)
+                    {
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Concepto Prestacion</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@p.nombre_prestacion</td>
+                                    <td>Q./ @p.monto</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <input type="hidden" class="form-control" value="@(total = total + p.monto);" />
+
+                    }
+                }
+                else
+                {
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="50%">Concepto Prestacion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>No hay pago de prestaciones</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+
+            </div>
+
+
+            <div class="row">
+                <label>Anticipos</label>
+                @if (anticipo.Count > 0)
+                {
+                    foreach (var a in anticipo)
+                    {
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Detalle anticipo</th>
+                                    <th>Monto</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@a.detalle</td>
+                                    <td>Q./ @a.monto</td>
+                                    <td>@a.fecha.ToLongDateString()</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <input type="hidden" class="form-control" value="@(total = total - a.monto);" />
+                    }
+                }
+                else
+                {
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="50%">Concepto Prestacion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>No tiene anticipos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+            </div>
+
+            <div class="row">
+                @if (prestamo != null)
+                {
+                    <label>Prestamo </label><br />
+                    <label>Descripcion de prestamos: <span>@prestamo.detalle</span></label>
+                    if (abono != null)
+                    {
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th width="50%">detalle Abono</th>
+                                    <th>Monto Prestamo</th>
+                                    <th>Monto Abono</th>
+                                    <th>Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@abono.detalle</td>
+                                    <td>Q./ @prestamo.monto</td>
+                                    <td>Q./ @abono.monto</td>
+                                    <td>Q./ @prestamo.saldo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+
+                    <input type="hidden" class="form-control" value="@(total = total - abono.monto);" />
+                }
+                else
+                {
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="50%">Prestamo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>No tiene prestamo pendientes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+            </div>
+
+            <div class="row">
+                @if (sancion.Count > 0)
+                {
+                    <label>Sanciones</label>
+                    foreach (var s in sancion)
+                    {
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Detalle sancion</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@s.detalle</td>
+                                    <td>Q./ @s.monto</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <input type="hidden" class="form-control" value="@(total = total - s.monto);" />
+                    }
+                }
+                else
+                {
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="50%">Detalle Sancion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>No tiene sansiones que pagar</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+            </div>
+
+            <div class="row">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td width="10%"></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Faltante</td>
+                            <td>Q/. @Model.faltante</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <h3>Total a pagar Q./ @total</h3>
+                <label class="pull-right">FIRMA __________________________</label>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Areas/Admin/Assets/js/jquery.min.js"></script>
+<script src="~/Areas/Admin/Assets/js/bootstrap.min.js"></script>

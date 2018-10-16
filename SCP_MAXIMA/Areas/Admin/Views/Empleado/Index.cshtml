@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+    var id_estacion = Request.Params["id_estacion"];
+}
+
+<div id="page-wrapper">
+    <div id="empleados" class="page">
+        <h1 class="page-header remove-margin">
+            @Html.ActionLink("agregar", "crud", new { id = 0, id_estacion = @id_estacion}, new { @class = "btn btn-primary pull-right" })
+            Empleados
+        </h1>
+
+        <div id="list"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var agrid = $("#list").anexGrid({
+            columnas: [
+                { leyenda: 'Nombres', columna: 'primer_nombre', ordenable: true },
+                { leyenda: 'Apellidos', columna: 'primer_apellido', ordenable: true },
+                { leyenda: 'Dpi', columna: 'dpi', ordenable: true },
+                { leyenda: 'Nit', columna: 'nit', ordenable: true },
+                { style: 'width:60px' },
+            ],
+            modelo: [
+                {
+                    propiedad: 'primer_nombre', formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/empleado/crud/")' + obj.id_empleado,
+                            contenido: valor
+                        });
+                    }
+                },
+                { propiedad: 'primer_apellido' },
+                { propiedad: 'dpi' },
+                { propiedad: 'nit' },
+                {
+                    formato: function (tr, obj, valor) {
+                        return anexGrid_link({
+                            href: '@Url.Content("~/admin/empleado/eliminar")' + obj.id_empleado,
+                            contenido: '<i class="fa fa-trash"></i>',
+                            class: 'btn btn-danger btn-xs btn-block btn-eliminar',
+                        });
+                    }
+                },
+            ],
+            url: '@Url.Content("~/admin/empleado/listar")',
+            paginable: true,
+            limite: [20, 60, 100],
+            columna: 'id',
+            columna_orden: 'DESC'
+        });
+
+        agrid.tabla().on('click', '.btn-eliminar', function () {
+            if (!confirm('¿Está seguro de eliminar este registro?'))
+            {
+                return;
+            }
+
+            $.post($(this).attr('href'), function (r) {
+                if (r.response) agrid.refrescar();
+            }, 'json')
+
+            return false;
+        })
+    })
+</script>
+

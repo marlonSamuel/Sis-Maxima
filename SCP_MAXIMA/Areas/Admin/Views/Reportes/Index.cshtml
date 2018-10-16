@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+    List<tbl_planilla> planilla = new tbl_planilla().ListarPlanilla();
+}
+
+<div id="page-wrapper">
+    <div id="planilla" class="page">
+
+        <h1 class="page-header remove-margin">
+            Reportes
+        </h1>
+        <hr />
+        <h3>Planillas</h3>
+        <div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-tasks fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge"></div>
+                                <div>Resumen General Planillas</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/admin/reportes/ExportaPlanilla" target="_blank">
+                        <div class="panel-footer">
+                            <span class="pull-left">Ver Resumen</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-tasks fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge"></div>
+                                <div>Resumen Planilla</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a data-toggle="modal" data-target="#pla">
+                        <div class="panel-footer">
+                            <span class="pull-left">Ver Resumen</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <h3>Empleados</h3>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-tasks fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge"></div>
+                                <div>Resumen Empleados</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/admin/reportes/ResumenEmpleados" target="_blank">
+                        <div class="panel-footer">
+                            <span class="pull-left">Ver Resumen</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div id="pla" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Seleccione numero de planilla</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group col-md-6 col-sm-6 col-lg-6">
+                                <select id="num_pla" class="form-control">
+                                    @foreach (var p in planilla)
+                                    {
+                                        <option value="@p.num_planilla">@p.num_planilla</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-3 col-sm-6 col-lg-3">
+                                <a id="btnPlanilla" class="btn btn-info">Seleccionar</a>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-undo"></i>volver</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#btnPlanilla").click(function () {
+            debugger;
+            var num_pla = $("#num_pla option:selected").text();
+            window.open("/Admin/Reportes/ExportaPlanillaNum?num_pla=" + num_pla);
+        });
+    });
+</script>
+
